@@ -1,4 +1,6 @@
 node { 
+    stage 'Check Out Code Repository'
+        checkout scm
     stage 'build prject'
         sh 'mvn clean package'
     stage 'run prject'
