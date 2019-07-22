@@ -19,6 +19,7 @@
       yum:
         name: java-1.8.0-openjdk
         state: latest
+      become: true
 
     - name: run java app
       shell: "java -cp /new/helloworld/target/helloworld-1.0.jar com.coveros.demo.helloworld.HelloWorld"
