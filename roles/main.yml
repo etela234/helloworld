@@ -1,0 +1,22 @@
+- hosts: all
+  tasks:
+    - debug:
+        msg: deploying hello world
+
+    - name: Create a directory if it does not exist
+      file:
+        path: /new/helloworld
+        state: directory
+            
+    - name: Synchronization of src on the control machine to dest on the remote hosts
+      synchronize:
+        src: /var/lib/jenkins/workspace/simple-java-git-app/target
+        dest: /new/helloworld
+
+    - name: install the latest version of openjdk
+      yum:
+        name: java-1.8.0-openjdk
+        state: latest
+
+    - name: run java app
+      shell: "java -cp target/helloworld-1.0.jar com.coveros.demo.helloworld.HelloWorld"
