@@ -13,6 +13,7 @@
       synchronize:
         src: /var/lib/jenkins/workspace/simple-java-git-app/target
         dest: /new/helloworld
+       become: true
 
     - name: install the latest version of openjdk
       yum:
@@ -20,4 +21,5 @@
         state: latest
 
     - name: run java app
-      shell: "java -cp target/helloworld-1.0.jar com.coveros.demo.helloworld.HelloWorld"
+      shell: "java -cp /new/helloworld/target/helloworld-1.0.jar com.coveros.demo.helloworld.HelloWorld"
+      become: true
