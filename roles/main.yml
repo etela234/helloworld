@@ -13,7 +13,7 @@
       synchronize:
         src: /var/lib/jenkins/workspace/simple-java-git-app/target
         dest: /new/helloworld
-       become: true
+      become: true
 
     - name: install the latest version of openjdk
       yum:
