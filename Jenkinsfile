@@ -5,6 +5,6 @@ node {
         sh 'mvn clean package'
     stage 'run prject'
         sh 'java -cp target/helloworld-1.0.jar com.coveros.demo.helloworld.HelloWorld'
-    stage 'deploy to node'
+    stage 'deploy app to node'
         ansiblePlaybook(credentialsId: 'private_main', inventory: 'roles/inventory.ini', playbook: 'roles/main.yml', disableHostKeyChecking: true)     
  }
